@@ -1,0 +1,30 @@
+{
+  "name": "pciu-cgpa-calculator",
+  "version": "1.0",
+  "private": false,
+  "scripts": {
+    "start": "set NODE_ENV=production && npm run build-parcel && node ./bin/www",
+    "dev": "set NODE_ENV=development && nodemon ./bin/www",
+    "build-parcel": "parcel build --no-source-maps public/index.htm",
+    "build-critical": "critical public/index.html --base public --inline > public/index.htm",
+    "postinstall": "npm run build-critical && npm run build-parcel && npm prune --production"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "public/*",
+      "dist/*"
+    ]
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "express": "~4.16.1",
+    "form-data": "^4.0.0",
+    "mysql2": "^2.3.3",
+    "node-html-parser": "^5.3.3"
+  },
+  "devDependencies": {
+    "critical": "^4.0.1",
+    "nodemon": "^2.0.16",
+    "parcel": "^2.6.1"
+  }
+}
